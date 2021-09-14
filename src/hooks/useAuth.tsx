@@ -61,7 +61,9 @@ function AuthProvider({ children }: AuthProviderData) {
 
       if(response.type === 'success' && response.params.error !== 'access_denied') {
         if(response.params.state !== STATE) {
+
           throw new Error('Invalid state value');
+          
         }
         api.defaults.headers.authorization = `Bearer ${response.params.access_token}`;
 
